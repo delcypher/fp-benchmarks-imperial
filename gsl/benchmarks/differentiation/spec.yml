@@ -1,0 +1,34 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - real_world
+dependencies:
+  gsl:
+    version: "2.1"
+language: c99
+name: differentiation
+schema_version: 0
+sources:
+  - "diff.c"
+variants:
+  klee:
+    categories:
+      - issta_2017
+    defines:
+      BUG: "0"
+      KLEE: null
+    dependencies:
+      klee_runtime: {}
+    verification_tasks: {}
+  non_klee:
+    defines:
+      BUG: "0"
+    description: Native version that does not depend on KLEE
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+description: >
+  Adapted from the diff.c example that comes with GSL.
+  For use with KLEE, the step size for the first differentiation
+  operation is symbolic, constrained to a range, while the point to

@@ -1,0 +1,35 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - synthetic
+dependencies:
+  cmath: {}
+  klee_runtime: {}
+language: c99
+name: memcpy_and_check_all_ones_significand
+schema_version: 0
+sources:
+  - memcpy_and_check_all_ones_significand.c
+variants:
+  klee_float:
+    defines:
+      KLEE: null
+      FLOAT_TYPE: float
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+  klee_double:
+    defines:
+      KLEE: null
+      FLOAT_TYPE: double
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+description: >
+  Performs a memcpy() of a symbolic floating point number
+  into the appropriate size integer and then checks that
+  
+  * If the IEEE-754 significand bits are all ones then the number
+  should be a NaN of infinity.
+  * Otherwise the float must be a finite number.

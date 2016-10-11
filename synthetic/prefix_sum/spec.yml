@@ -1,0 +1,78 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - synthetic
+language: c99
+name: prefix_sum
+schema_version: 0
+sources:
+  - prefix_sum.c
+variants:
+  # FIXME: Should we add double variants?
+  klee_bug_float:
+    categories:
+      - issta_2017
+    defines:
+      BUG: "1"
+      FLOAT_TYPE: float
+      KLEE: null
+      N: "5"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            locations:
+              -
+                file: "prefix_sum.c"
+                line: 80
+  klee_no_bug_float:
+    categories:
+      - issta_2017
+    defines:
+      BUG: "0"
+      FLOAT_TYPE: float
+      KLEE: null
+      N: "5"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+  # These variants are just for testing and can be removed
+  non_klee_bug_float:
+    defines:
+      BUG: "1"
+      FLOAT_TYPE: float
+      N: "5"
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            locations:
+              -
+                file: "prefix_sum.c"
+                line: 80
+  non_klee_no_bug_float:
+    defines:
+      BUG: "0"
+      FLOAT_TYPE: float
+      N: "5"
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+description: >
+  This program computes a prefix sum over an array of floating-point
+  numbers, and asserts that (a) the prefix sum result is
+  monotonically increasing, and (b) each element of the prefix sum
+  result is larger than or equal to the corresponding element of the
+  input.  This holds if every element of the input is non-negative.
+
+  The program can be compiled in correct or buggy form; in correct
+  form each element is assumed to be non-negative; in incorrect form
+  this is not assumed for element 0.  If it is sufficiently negative
+  it can spoil the postcondition of the program.

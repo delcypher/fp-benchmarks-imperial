@@ -1,0 +1,66 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - synthetic
+language: c99
+name: sum_is_commutative
+schema_version: 0
+sources:
+  - sum_is_commutative.c
+variants:
+  klee_float:
+    categories:
+      - issta_2017
+    defines:
+      FLOAT_TYPE: float
+      KLEE: null
+      N: "5"
+      BUG: "0"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks: {}
+
+  klee_float_bug:
+    categories:
+      - issta_2017
+    defines:
+      FLOAT_TYPE: float
+      KLEE: null
+      N: "5"
+      BUG: "1"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            description: >
+              An injected bug messes up one of the loop conditions,
+              which will stop the sums from matching
+            locations:
+              -
+                file: "sum_is_commutative.c" 
+                line: 72
+
+      no_invalid_deref:
+        correct: false
+        description: >
+          The messed up bounds may cause and out-of-bounds access
+  # This variant is just for testing. We can drop it later or exclude it by
+  # sticking it in category that we later filter out.
+  non_klee_float:
+    defines:
+      FLOAT_TYPE: float
+      N: "5"
+    description: Native version that does not depend on KLEE
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+description: >
+  Performs the summation of array data in to ways:
+     ((((0 + data[0]) + data[1]) + data[2]) + ... )
+     ( ... + (data[2] + (data[1] + (data[0] + 0))))
+  and checks that they are equivalent.  They should be,
+  since floating-point addition is commutative.

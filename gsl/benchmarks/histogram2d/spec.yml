@@ -1,0 +1,46 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - real_world
+dependencies:
+  gsl:
+    version: "2.1"
+language: c99
+name: histogram2d
+schema_version: 0
+sources:
+  - "histogram2d-sym.c"
+variants:
+  klee_bug:
+    categories:
+      - issta_2017
+    defines:
+      BUG: "1"
+      KLEE: null
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+  klee_correct:
+    categories:
+      - issta_2017
+    defines:
+      KLEE: null
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+  # These variants is just for testing. We can drop it later or exclude it by
+  # sticking it in category that we later filter out.
+  non_klee:
+    description: Native version that does not depend on KLEE
+    defines:
+      BUG: "1"
+    verification_tasks:
+      no_assert_fail:
+        correct: null
+description: >
+  This is a modified version of the 2D histogram example from the GSL manual.

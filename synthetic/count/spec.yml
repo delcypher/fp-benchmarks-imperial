@@ -1,0 +1,64 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - synthetic
+language: c99
+name: count
+schema_version: 0
+sources:
+  - count.c
+variants:
+  klee:
+    defines:
+      BUG: "0"
+      KLEE: null
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+  klee_bug:
+    categories:
+      - issta_2017
+    defines:
+      BUG: "1"
+      KLEE: null
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            locations:
+              -
+                file: count.c
+                line: 81
+  # These variants is just for testing. We can drop it later or exclude it by
+  # sticking it in category that we later filter out.
+  non_klee:
+    description: Native version that does not depend on KLEE
+    defines:
+      BUG: "0"
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+  non_klee_bug:
+    defines:
+      BUG: "1"
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            locations:
+              -
+                file: count.c
+                line: 79
+description: >
+  This example counts the number of single-precision floating-point
+  numbers between two bounding single-precision floating-point
+  numbers.  The bounding numbers are required to be sufficiently
+  close that we know an upper bound on the count.  The benchmark
+  checks that the count does not exceed this bound.

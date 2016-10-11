@@ -1,0 +1,22 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - synthetic
+language: c99
+name: memcpy_and_use_as_bitvector
+schema_version: 0
+sources:
+  - memcpy_and_use_as_bitvector.c
+variants:
+  klee:
+    defines:
+      BUG: "0"
+      KLEE: null
+    dependencies:
+      klee_runtime: {}
+    verification_tasks: {}
+description: >
+  This example tries to stress test KLEE by casting
+  symbolic floating point expressions to various different
+  integer operators.

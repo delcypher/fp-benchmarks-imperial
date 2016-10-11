@@ -1,0 +1,6 @@
+add_subdirectory(synthetic)
+option(BUILD_GSL "Build GNU Scientific Library Benchmarks" ON)
+if (BUILD_GSL)
+  add_subdirectory(gsl)
+endif()
+add_subdirectory(svcomp)

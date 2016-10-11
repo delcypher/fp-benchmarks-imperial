@@ -1,0 +1,51 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - synthetic
+language: c99
+name: sum_is_not_associative
+schema_version: 0
+sources:
+  - sum_is_not_associative.c
+variants:
+  # FIXME: Should we have a correct variant too? I don't think this is possible
+  # without chainging the property we are testing.
+  klee_bug:
+    defines:
+      FLOAT_TYPE: float
+      KLEE: null
+      N: "5"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            locations:
+              -
+                file: sum_is_not_associative.c
+                line: 66
+  # This variant is just for testing. We can drop it later or exclude it by
+  # sticking it in category that we later filter out.
+  non_klee_bug:
+    defines:
+      FLOAT_TYPE: float
+      N: "5"
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            locations:
+              -
+                file: sum_is_not_associative.c
+                line: 66
+description: >
+  Performs the summation of array data in to ways:
+     ((((0 + data[0]) + data[1]) + data[2]) + ... )
+     (0 + (data[0] + (data[1] + (data[2] + ... ))))
+  and checks that they are equivalent.  In general they
+  need not be, since floating-point addition is not
+  associative.

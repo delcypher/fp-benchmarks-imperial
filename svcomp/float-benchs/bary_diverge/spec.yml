@@ -1,0 +1,21 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - svcomp
+  - synthetic
+dependencies:
+  svcomp_klee_runtime: {}
+language: c99
+name: bary_diverge
+schema_version: 0
+sources:
+  - bary_diverge.c
+verification_tasks:
+  no_assert_fail:
+    # FIXME: SV-COMP doesn't make it clear if this benchmark is supposed
+    # to be correct or not.
+    correct: null
+description: >
+  This benchmark is taken from SV-COMP from flaot-benchs/bary_diverge.c
+

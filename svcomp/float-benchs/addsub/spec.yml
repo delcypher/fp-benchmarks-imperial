@@ -1,0 +1,40 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - svcomp
+  - synthetic
+dependencies:
+  svcomp_klee_runtime: {}
+language: c99
+name: addsub
+schema_version: 0
+sources:
+  - addsub.c
+variants:
+  double_exact:
+    defines:
+      EXACT: "1"
+      FLOAT_TYPE: double
+    verification_tasks: {}
+  float_exact:
+    defines:
+      EXACT: "1"
+      FLOAT_TYPE: float
+    verification_tasks: {}
+  float_inexact:
+    defines:
+      EXACT: "0"
+      FLOAT_TYPE: float
+    verification_tasks: {}
+description: >
+  This benchmark is an amalgamation of three SV-COMP benchmarks
+  * float-benchs/addsub_double_exact.c
+  * float-benchs/addsub_float_exact.c
+  * float-benchs/addsub_float_inexact.c
+
+  This is not a particularly interesting benchmark. In fact
+  when compiling with Clang with optimizations enabled the
+  computation will be constant folded and so the value passed
+  to __VERIFIER_assert() is already pre-determined at compile time.
+

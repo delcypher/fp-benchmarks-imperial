@@ -1,0 +1,52 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - synthetic
+language: c99
+name: vanishing
+schema_version: 0
+sources:
+  - vanishing.c
+variants:
+  klee_bug:
+    categories:
+      - issta_2017
+    defines:
+      FLOAT_TYPE: float
+      KLEE: null
+      N: "3"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            locations:
+              -
+                file: vanishing.c
+                line: 66
+  # This variant is just for testing. We can drop it later or exclude it by
+  # sticking it in category that we later filter out.
+  non_klee_bug:
+    defines:
+      FLOAT_TYPE: float
+      N: "3"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            locations:
+              -
+                file: vanishing.c
+                line: 66
+description: >
+  This example counts the number of single-precision floating-point
+  numbers between two bounding single-precision floating-point
+  numbers.  The bounding numbers are required to be sufficiently
+  close that we know an upper bound on the count.  The benchmark
+  checks that the count does not exceed this bound.

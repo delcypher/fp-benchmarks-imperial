@@ -1,0 +1,49 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - synthetic
+language: c99
+name: sorted_search
+schema_version: 0
+sources:
+  - sorted_search.c
+variants:
+  # FIXME: Should we add double variants?
+  klee_bug_float:
+    categories:
+      - issta_2017
+    defines:
+      BUG: "1"
+      FLOAT_TYPE: float
+      KLEE: null
+      N: "5"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            locations:
+              -
+                file: sorted_search.c
+                line: 91
+  klee_no_bug_float:
+    categories:
+      - issta_2017
+    defines:
+      BUG: "0"
+      FLOAT_TYPE: float
+      KLEE: null
+      N: "5"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+  # FIXME: Should we declare double variants too?
+description: >
+  Searches a sorted list using linear and binary search methods. The
+  benchmark can be made buggy by using the BUG macro, in which case
+  the linear search is incorrect.

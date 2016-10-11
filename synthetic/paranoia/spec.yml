@@ -1,0 +1,20 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - synthetic
+defines:
+  NOPAUSE: null # Make non-interactive
+  NOSIGNAL: null # Avoid use of signals which KLEE doesn't support.
+dependencies:
+  cmath: {}
+language: c99
+name: paranoia
+schema_version: 0
+sources:
+  - paranoia.c
+verification_tasks:
+  no_reach_error_function:
+    correct: true
+description: >
+  This is a port of William Kahan's Paranoia test program.

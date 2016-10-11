@@ -1,0 +1,59 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - real_world
+dependencies:
+  gsl:
+    version: "2.1"
+language: c99
+name: sort_smallest
+schema_version: 0
+sources:
+  - "sort_smallest.c"
+variants:
+  klee:
+    categories:
+      - issta_2017
+    defines:
+      BUG: "0"
+      KLEE: null
+      SMALL_LENGTH: "3"
+      LENGTH: "6"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks: {}
+  klee_bug:
+    categories:
+      - issta_2017
+    defines:
+      BUG: "1"
+      KLEE: null
+      SMALL_LENGTH: "3"
+      LENGTH: "6"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            description: 'Assertion can fail due to result being unsorted.' 
+            locations:
+              -
+                file: 'sort_smallest.c'
+                line: 71
+  non_klee:
+    defines:
+      BUG: "0"
+      SMALL_LENGTH: "5"
+      LENGTH: "100000"
+    description: Native version that does not depend on KLEE
+    verification_tasks: {}
+description: >
+  Adapted from the sortsmall.c example that comes with GSL.
+  The example uses the function gsl_sort_smallest to select the SMALL_LENGTH
+  smallest numbers from LENGTH uniform random variates stored in an
+  array; these are symbolic in the case of KLEE.  An assertion checks
+  that the first two output numbers are indeed sorted.  An injected
+  bug can be enabled to swap them, to make this assertion fail.

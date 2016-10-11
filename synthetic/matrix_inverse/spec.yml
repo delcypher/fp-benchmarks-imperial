@@ -1,0 +1,106 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - synthetic
+language: c99
+name: matrix_inverse
+schema_version: 0
+sources:
+  - matrix_inverse.c
+variants:
+  # FIXME: Should we make a correct variant that is more interesting
+  # than just negating the assert?
+  klee_float_2:
+    defines:
+      KLEE: null
+      FLOAT_TYPE: float
+      N: "2"
+      BUG: "0"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks: {}
+  klee_double_4:
+    categories:
+      - issta_2017
+    defines:
+      KLEE: null
+      FLOAT_TYPE: double
+      N: "4"
+      BUG: "0"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks: {}
+  klee_float_2_bug:
+    defines:
+      KLEE: null
+      FLOAT_TYPE: float
+      N: "2"
+      BUG: "1"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            description: >
+              An inverse should exist which will cause the assert to fail.
+            locations:
+              -
+                file: matrix_inverse.c
+                line: 120
+  klee_float_4_bug:
+    categories:
+      - issta_2017
+    defines:
+      KLEE: null
+      FLOAT_TYPE: float
+      N: "4"
+      BUG: "1"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            description: >
+              An inverse should exist which will cause the assert to fail.
+            locations:
+              -
+                file: matrix_inverse.c
+                line: 120
+  # These variants are just for testing and can be removed later.
+  non_klee_float_2:
+    defines:
+      FLOAT_TYPE: float
+      N: "2"
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            description: >
+              An inverse should exist which will cause the assert to fail.
+            locations:
+              -
+                file: matrix_inverse.c
+                line: 113
+  non_klee_float_4:
+    defines:
+      FLOAT_TYPE: float
+      N: "4"
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            description: >
+              An inverse should exist which will cause the assert to fail.
+            locations:
+              -
+                file: matrix_inverse.c
+                line: 113
+description: >
+  TODO

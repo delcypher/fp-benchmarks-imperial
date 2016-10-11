@@ -1,0 +1,58 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - synthetic
+language: c99
+name: non_terminating
+schema_version: 0
+sources:
+  - "non-terminating.c"
+variants:
+  klee_bug:
+    categories:
+      - issta_2017
+    defines:
+      KLEE: null
+      BUG: "1"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            locations:
+              -
+                file: "non-terminating.c"
+                line: 65
+  klee_no_bug:
+    defines:
+      KLEE: null
+      BUG: "0"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks: {}
+  # These variants are just for testing and can be removed
+  non_klee_bug:
+    defines:
+      BUG: "1"
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            locations:
+              -
+                file: "non-terminating.c"
+                line: 65
+  non_klee_no_bug:
+    defines:
+      BUG: "0"
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+description: >
+  This benchmark explores whether a program terminates or not when a
+  loop counter is decremented by a runtime-fixed floating-point
+  value.

@@ -1,0 +1,56 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - synthetic
+language: c99
+name: sqrt # FIXME: This name sucks and is likely to clash with other benchmarks
+schema_version: 0
+sources:
+  - sqrt.c
+variants:
+  klee:
+    categories:
+      - issta_2017
+    defines:
+      KLEE: null
+      BUG: "0"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        description: >
+          The benchmark should be deemed correct: it is restricted to numbers
+          within a certain range for which the square root function works
+        correct: true
+  klee_bug:
+    categories:
+      - issta_2017
+    defines:
+      KLEE: null
+      BUG: "1"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        description: >
+          The benchmark has an injected bug that means the square root is not
+          properly computed
+        correct: false
+        counter_examples:
+          -
+            description: An assert should fail
+            locations:
+              -
+                file: "sqrt.c" 
+                line: 80
+             
+ # This variant is just for testing. We can drop it later or exclude it by
+  # sticking it in category that we later filter out.
+  non_klee:
+    description: Native version that does not depend on KLEE
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+description: >
+  Computes the square root of a number using a naive binary search.

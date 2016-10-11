@@ -1,0 +1,76 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - real_world
+dependencies:
+  gsl:
+    version: "2.1"
+language: c99
+name: polyroots
+schema_version: 0
+sources:
+  - "polyroots-sym.c"
+variants:
+  klee_high_degree_bug:
+    categories:
+      - issta_2017
+    defines:
+      BUG: "1"
+      KLEE: null
+      HIGH_DEGREE: "1"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+  klee_high_degree_correct:
+    defines:
+      KLEE: null
+      HIGH_DEGREE: "1"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+  klee_low_degree_correct:
+    categories:
+      - issta_2017
+    defines:
+      KLEE: null
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+  # These variants are just for testing.  We can drop them later or exclude them by
+  # sticking them in a category that we later filter out.
+  non_klee_high_degree_correct:
+    description: Native version that does not depend on KLEE
+    defines:
+      HIGH_DEGREE: "1"
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+  non_klee_low_degree_correct:
+    description: Native version that does not depend on KLEE
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+  non_klee_high_degree_bug:
+    description: Native version that does not depend on KLEE
+    defines:
+      HIGH_DEGREE: "1"
+      BUG: "1"
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+  non_klee_low_degree_bug:
+    defines:
+      BUG: "1"
+    description: Native version that does not depend on KLEE
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+description: >
+  This is a modified version of the roots of polynomials example from the GSL manual.

@@ -1,0 +1,67 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - real_world
+dependencies:
+  gsl:
+    version: "2.1"
+language: c99
+name: vectors
+schema_version: 0
+sources:
+  - "vector_example.c"
+variants:
+  klee:
+    categories:
+      - issta_2017
+    defines:
+      BUG: "0"
+      KLEE: null
+      N: "3"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks: {}
+  klee_bug:
+    categories:
+      - issta_2017
+    defines:
+      BUG: "1"
+      KLEE: null
+      N: "3"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            description: 'NaN can cause property not to hold.'
+            locations:
+              -
+                file: 'vector_example.c'
+                line: 56
+          -
+            description: 'NaN can cause property not to hold.'
+            locations:
+              -
+                file: 'vector_example.c'
+                line: 57
+          -
+            description: 'NaN can cause property not to hold.'
+            locations:
+              -
+                file: 'vector_example.c'
+                line: 58
+  non_klee:
+    defines:
+      BUG: "0"
+      N: "3"
+    description: Native version that does not depend on KLEE
+    verification_tasks: {}
+description: >
+  Example program that uses the GSL vectors library to perform two
+  sequences of operations that should be equivalent, even with non-NaN
+  symbolic vector values.  If NaNs are allowed, the assertions in the
+  program can legitimately fail.
+

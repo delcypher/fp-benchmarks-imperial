@@ -1,0 +1,107 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - synthetic
+dependencies:
+  # Needed for rounding functions
+  cmath: {}
+language: c99
+name: interval
+schema_version: 0
+sources:
+  - interval.c
+variants:
+  klee_bug:
+    categories:
+      - issta_2017
+    defines:
+      KLEE: null
+      BUG: "1"
+      N: "7"
+      SYMBOLIC_INCREMENT: "0"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            description: 'TODO'
+            locations:
+              -
+                file: 'interval.c'
+                line: 100
+          -
+            description: 'TODO'
+            locations:
+              -
+                file: 'interval.c'
+                line: 105
+  klee_no_bug:
+    defines:
+      KLEE: null
+      BUG: "0"
+      N: "7"
+      SYMBOLIC_INCREMENT: "0"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+  # KLEE really struggles with these variants.
+  klee_bug_symbolic_increment:
+    defines:
+      KLEE: null
+      BUG: "1"
+      N: "7"
+      SYMBOLIC_INCREMENT: "1"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            description: 'TODO'
+            locations:
+              -
+                file: 'interval.c'
+                line: 100
+          -
+            description: 'TODO'
+            locations:
+              -
+                file: 'interval.c'
+                line: 105
+  klee_no_bug_symbolic_increment:
+    defines:
+      KLEE: null
+      BUG: "0"
+      N: "7"
+      SYMBOLIC_INCREMENT: "1"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+  # These variants just exist for testing. We can drop them later.
+  non_klee_bug:
+    defines:
+      BUG: "1"
+      N: "7"
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+  non_klee_no_bug:
+    defines:
+      BUG: "0"
+      N: "100"
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+description: >
+  Performs an additive computation using double-precision arithmetic
+  and single-precision interval arithmetic, and asserts that the
+  double-precision result is contained in the single-precision
+  interval.

@@ -1,0 +1,99 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - real_world
+dependencies:
+  gsl:
+    version: "2.1"
+language: c99
+name: statistics
+schema_version: 0
+sources:
+  - "stat.c"
+variants:
+  klee:
+    defines:
+      BUG: "0"
+      KLEE: null
+    dependencies:
+      klee_runtime: {}
+    verification_tasks: {}
+  klee_bug:
+    categories:
+      - issta_2017
+    defines:
+      BUG: "1"
+      KLEE: null
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            description: 'NaN can cause property not to hold.'
+            locations:
+              -
+                file: 'stat.c'
+                line: 44
+          -
+            description: 'NaN can cause property not to hold.'
+            locations:
+              -
+                file: 'stat.c'
+                line: 45
+          -
+            description: 'NaN can cause property not to hold.'
+            locations:
+              -
+                file: 'stat.c'
+                line: 46
+          -
+            description: 'NaN can cause property not to hold.'
+            locations:
+              -
+                file: 'stat.c'
+                line: 47
+          -
+            description: 'NaN can cause property not to hold.'
+            locations:
+              -
+                file: 'stat.c'
+                line: 48
+          -
+            description: 'NaN can cause property not to hold.'
+            locations:
+              -
+                file: 'stat.c'
+                line: 49
+          -
+            description: 'NaN can cause property not to hold.'
+            locations:
+              -
+                file: 'stat.c'
+                line: 50
+          -
+            description: 'NaN can cause property not to hold.'
+            locations:
+              -
+                file: 'stat.c'
+                line: 51
+          -
+            description: 'NaN can cause property not to hold.'
+            locations:
+              -
+                file: 'stat.c'
+                line: 52
+  non_klee:
+    defines:
+      BUG: "0"
+    description: Native version that does not depend on KLEE
+    verification_tasks: {}
+description: >
+  Adapted from the stat.c example that comes with GSL.
+  The unmodified program does some simple statistics on some concrete
+  values.  The KLEE version makes some of these values symbolic with
+  appropriate ranges, and checks that the statistical results are within
+  the bounds allowed by these ranges.   If BUG is defined, a NaN value
+  is introduced to wreck all the stats.

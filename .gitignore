@@ -1,0 +1,6 @@
+# Emacs temp files
+*~
+
+# Vim swap files
+*.swp
+*.swo

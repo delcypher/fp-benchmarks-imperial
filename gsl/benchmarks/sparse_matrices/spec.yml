@@ -1,0 +1,52 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - real_world
+dependencies:
+  gsl:
+    version: "2.1"
+language: c99
+name: sparse_matrices
+schema_version: 0
+sources:
+  - "spmatrix.c"
+variants:
+  klee:
+    defines:
+      BUG: "0"
+      KLEE: null
+    dependencies:
+      klee_runtime: {}
+    verification_tasks: {}
+  klee_bug:
+    categories:
+      - issta_2017
+    defines:
+      BUG: "1"
+      KLEE: null
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            description: 'Layout of matrix can match the given layout.'
+            locations:
+              -
+                file: 'spmatrix.c'
+                line: 81
+  non_klee:
+    defines:
+      BUG: "0"
+    description: Native version that does not depend on KLEE
+    verification_tasks: {}
+description: >
+  Adapted from the spmatrix.c example that comes with GSL.
+  The unmodified program builds a 5-by-4 sparse matrix and prints it
+  in various forms.  The KLEE version makes the layout and contents
+  of the matrix partially symbolic.  If BUG is defined, there is an 
+  assertion that the matrix cannot have the sparse layout prescribed
+  by the example (which in fact it can, if the symbolic matrix layout
+  is concretised to match the example.)

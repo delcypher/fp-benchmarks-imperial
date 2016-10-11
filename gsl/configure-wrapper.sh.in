@@ -1,0 +1,10 @@
+#!/bin/sh
+# @AUTOGEN_MESSAGE@
+
+# Exit on failure
+set -e
+
+# This a wrapper script around configure so we can pass the right environment
+# variables.  ExternalProject_Add() can't pass environment variable values with
+# spaces when running commands in so this script is a hack to work around that.
+CC="@CMAKE_C_COMPILER@" CXX="@CMAKE_CXX_COMPILER@" CFLAGS="@GSL_CFLAGS@" CXXFLAGS="@GSL_CXXFLAGS@" @configure_script@ --prefix="@GSL_INSTALL_PREFIX@"
