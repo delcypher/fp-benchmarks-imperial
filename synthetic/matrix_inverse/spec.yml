@@ -12,6 +12,8 @@ variants:
   # FIXME: Should we make a correct variant that is more interesting
   # than just negating the assert?
   klee_float_2:
+    categories:
+      - issta_2017
     defines:
       KLEE: null
       FLOAT_TYPE: float
@@ -56,6 +58,27 @@ variants:
     defines:
       KLEE: null
       FLOAT_TYPE: float
+      N: "4"
+      BUG: "1"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            description: >
+              An inverse should exist which will cause the assert to fail.
+            locations:
+              -
+                file: matrix_inverse.c
+                line: 120
+  klee_double_4_bug:
+    categories:
+      - issta_2017
+    defines:
+      KLEE: null
+      FLOAT_TYPE: double
       N: "4"
       BUG: "1"
     dependencies:

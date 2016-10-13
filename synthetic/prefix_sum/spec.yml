@@ -9,13 +9,31 @@ schema_version: 0
 sources:
   - prefix_sum.c
 variants:
-  # FIXME: Should we add double variants?
   klee_bug_float:
     categories:
       - issta_2017
     defines:
       BUG: "1"
       FLOAT_TYPE: float
+      KLEE: null
+      N: "5"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: false
+        counter_examples:
+          -
+            locations:
+              -
+                file: "prefix_sum.c"
+                line: 80
+  klee_bug_double:
+    categories:
+      - issta_2017
+    defines:
+      BUG: "1"
+      FLOAT_TYPE: double
       KLEE: null
       N: "5"
     dependencies:

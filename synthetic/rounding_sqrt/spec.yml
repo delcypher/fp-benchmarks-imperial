@@ -12,6 +12,8 @@ sources:
   - rounding_sqrt.c
 variants:
   klee:
+    categories:
+      - issta_2017
     defines:
       BUG: "0"
       KLEE: null
@@ -50,10 +52,12 @@ variants:
               -
                 file: rounding_sqrt.c
                 line: 123
-  # These variants is just for testing. We can drop it later or exclude it by
-  # sticking it in category that we later filter out.
   non_klee:
-    description: Native version that does not depend on KLEE
+    categories:
+      - issta_2017
+    description: >
+      Native version that does not depend on KLEE. Here we
+      are testing that the concrete interpretation is correct.
     defines:
       BUG: "0"
     verification_tasks:

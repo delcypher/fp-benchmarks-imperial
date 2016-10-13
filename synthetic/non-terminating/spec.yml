@@ -27,6 +27,8 @@ variants:
                 file: "non-terminating.c"
                 line: 65
   klee_no_bug:
+    categories:
+      - issta_2017
     defines:
       KLEE: null
       BUG: "0"

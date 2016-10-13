@@ -12,6 +12,8 @@ variants:
   # FIXME: Should we have a correct variant too? I don't think this is possible
   # without chainging the property we are testing.
   klee_bug:
+    categories:
+      - issta_2017
     defines:
       FLOAT_TYPE: float
       KLEE: null

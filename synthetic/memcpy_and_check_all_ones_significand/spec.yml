@@ -3,6 +3,7 @@ architectures:
 categories:
   - imperial
   - synthetic
+  - issta_2017
 dependencies:
   cmath: {}
   klee_runtime: {}
