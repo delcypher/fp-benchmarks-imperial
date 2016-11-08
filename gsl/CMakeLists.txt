@@ -64,8 +64,8 @@ else()
 endif()
 
 string(TOUPPER "${CMAKE_BUILD_TYPE}" CMAKE_BUILD_TYPE_UPPER)
-set(GSL_CFLAGS "${CMAKE_C_FLAGS_${CMAKE_BUILD_TYPE_UPPER}} ${GSL_LONG_DOUBLE_FLAG}")
-set(GSL_CXXFLAGS "${CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE_UPPER}} ${GSL_LONG_DOUBLE_FLAG}")
+set(GSL_CFLAGS "${CMAKE_C_FLAGS_${CMAKE_BUILD_TYPE_UPPER}} ${CMAKE_C_FLAGS} ${GSL_LONG_DOUBLE_FLAG}")
+set(GSL_CXXFLAGS "${CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE_UPPER}} ${CMAKE_CXX_FLAGS} ${GSL_LONG_DOUBLE_FLAG}")
 # Generate a script to invoke the configure script so we can pass environment variables.
 set(AUTOGEN_MESSAGE "Automatically generated. DO NOT EDIT!")
 set(configure_script "${CMAKE_CURRENT_SOURCE_DIR}/gsl-2.1/configure")
