@@ -6,6 +6,7 @@ categories:
 dependencies:
   gsl:
     version: "2.1"
+  cmath: {}
 language: c99
 name: blas
 schema_version: 0

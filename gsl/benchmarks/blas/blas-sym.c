@@ -1,6 +1,7 @@
-#include <stdio.h>
 #include <assert.h>
 #include <gsl/gsl_blas.h>
+#include <math.h>
+#include <stdio.h>
 
 #ifdef KLEE
 #include "klee/klee.h"
