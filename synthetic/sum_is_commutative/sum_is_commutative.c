@@ -37,16 +37,22 @@ FLOAT_TYPE sum1(FLOAT_TYPE data[N]) {
 
 FLOAT_TYPE sum2(FLOAT_TYPE data[N]) {
   FLOAT_TYPE sum = (FLOAT_TYPE)0.0f;
-  for(int i = 0; i <
-#if BUG==0
- N
+
+// This is kind of clumsy but it
+// is here to work around a bug clang 3.4
+// where the debug information on `data[i]`
+// is wrong when it is inside the loop head
+// which is split accross multiple lines.
+#if BUG == 0
+#define LOOP_BOUND(i) N
 #else
- data[i]
+#define LOOP_BOUND(i) data[i]
 #endif
-       ; i++) {
+  for(int i = 0; i < LOOP_BOUND(i) ; ++i) {
     sum = data[i] + sum;
   }
   return sum;
+#undef LOOP_BOUND
 }
 
 
