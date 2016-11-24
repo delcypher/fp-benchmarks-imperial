@@ -33,6 +33,12 @@ variants:
     verification_tasks:
       no_assert_fail:
         correct: false
+        counter_examples:
+          -
+            locations:
+              -
+                file: "integration-sym.c"
+                line: 49
   # These variants is just for testing. We can drop it later or exclude it by
   # sticking it in category that we later filter out.
   non_klee_correct:
