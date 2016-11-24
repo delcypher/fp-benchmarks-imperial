@@ -25,6 +25,7 @@ int main (void)
 
 #ifdef KLEE
   klee_make_symbolic(a, sizeof(a), "a");
+  klee_assume(!isnan(a[0]));
   a[1] = 0.12;
   a[2] = 0.13;
   a[3] = 0.21;
