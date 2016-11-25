@@ -97,6 +97,7 @@ int main() {
   // Make the array B symbolic, so that we are in effect searching for
   // an inverse for A
   klee_make_symbolic(B, sizeof(FLOAT_TYPE)*N*N, "B");
+#endif
 
   // For the bug case, here is the actual inverse: the diagonal alternates between 1 and
   // 0.5; if KLEE is enabled then we leave the diagonal symbolic.
@@ -115,7 +116,6 @@ int main() {
       }
     }
   }
-#endif
 
   assert(!check_inverses(A, B));
   return 0;
