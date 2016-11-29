@@ -1,0 +1,31 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - synthetic
+dependencies:
+  cmath: {}
+language: c99
+name: fsub_to_exact_zero
+schema_version: 0
+sources:
+  - fsub_to_exact_zero.c
+variants:
+  klee_float:
+    defines:
+      FLOAT_TYPE: float
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+  klee_double:
+    defines:
+      FLOAT_TYPE: double
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+description: >
+  Tests 6.3 Sign bit part of IEEE-754 2008
