@@ -31,13 +31,13 @@ variants:
             locations:
               -
                 file: 'interval.c'
-                line: 100
+                line: 99
           -
             description: 'TODO'
             locations:
               -
                 file: 'interval.c'
-                line: 105
+                line: 104
   klee_no_bug:
     categories:
       - issta_2017
