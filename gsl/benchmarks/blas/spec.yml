@@ -39,12 +39,12 @@ variants:
             locations:
               -
                 file: blas-sym.c
-                line: 49
+                line: 51
           -
             locations:
               -
                 file: blas-sym.c
-                line: 50
+                line: 52
   # These variants is just for testing. We can drop it later or exclude it by
   # sticking it in category that we later filter out.
   non_klee_correct:
