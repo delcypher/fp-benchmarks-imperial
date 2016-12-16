@@ -57,7 +57,7 @@ variants:
             locations:
               -
                 file: count.c
-                line: 79
+                line: 81
 description: >
   This example counts the number of single-precision floating-point
   numbers between two bounding single-precision floating-point

@@ -109,7 +109,7 @@ variants:
             locations:
               -
                 file: matrix_inverse.c
-                line: 113
+                line: 120
   non_klee_float_4:
     defines:
       FLOAT_TYPE: float
@@ -124,6 +124,6 @@ variants:
             locations:
               -
                 file: matrix_inverse.c
-                line: 113
+                line: 120
 description: >
   TODO
