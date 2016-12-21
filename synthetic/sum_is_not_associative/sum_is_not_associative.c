@@ -52,9 +52,9 @@ int main() {
 #ifdef KLEE
   klee_make_symbolic(data, sizeof(FLOAT_TYPE)*N, "data");
 #else
-  // This will lead to failure if e.g. FLOAT_TYPE is float and N is 400
+  // This will lead to failure FLOAT_TYPE is float or double, and N is 5
   for(long long i = 0; i < N; i++) {
-    data[i] = (FLOAT_TYPE)(i*i);
+    data[i] = ((FLOAT_TYPE)(i*i)) + ((FLOAT_TYPE) 1.0)/(N + 1);
   }
 #endif
 
