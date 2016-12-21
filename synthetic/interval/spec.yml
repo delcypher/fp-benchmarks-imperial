@@ -101,7 +101,7 @@ variants:
       N: "100"
     verification_tasks:
       no_assert_fail:
-        correct: false
+        correct: true
 description: >
   Performs an additive computation using double-precision arithmetic
   and single-precision interval arithmetic, and asserts that the
