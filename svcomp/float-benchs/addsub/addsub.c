@@ -25,7 +25,7 @@
 #error Invalid FLOAT_TYPE
 #endif
 
-int main()
+int main(int argc, char** argv)
 {
   FLOAT_TYPE x, y, z, r;
   x = START_VALUE;

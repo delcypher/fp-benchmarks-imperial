@@ -21,7 +21,7 @@
 #include "klee/klee.h"
 #endif
 
-int main() {
+int main(int argc, char** argv) {
 
   // The program counts all floats between start (inclusive) and end
   // (exclusive)

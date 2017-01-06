@@ -9,7 +9,7 @@
 #include <gsl/gsl_spmatrix.h>
 
 int
-main()
+main(int argc, char** argv)
 {
   gsl_spmatrix *A = gsl_spmatrix_alloc(5, 4); /* triplet format */
   gsl_spmatrix *C;

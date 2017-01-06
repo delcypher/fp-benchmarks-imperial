@@ -17,7 +17,7 @@
 #endif
 
 int
-main (void)
+main (int argc, char** argv)
 {
 #ifndef KLEE
   const gsl_rng_type * T;

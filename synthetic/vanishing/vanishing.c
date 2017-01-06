@@ -29,7 +29,7 @@
 
 #define FLOAT_LITERAL(X) (FLOAT_TYPE)X
 
-int main() {
+int main(int argc, char** argv) {
 
   FLOAT_TYPE x;
   FLOAT_TYPE y;

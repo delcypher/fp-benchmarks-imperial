@@ -5,7 +5,7 @@
 
 int sink = 0;
 
-int main() {
+int main(int argc, char** argv) {
   float f;
   klee_make_symbolic(&f, sizeof(float), "f");
   assert(sizeof(int) == sizeof(float));

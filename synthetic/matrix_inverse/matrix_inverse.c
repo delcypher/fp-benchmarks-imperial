@@ -68,7 +68,7 @@ bool check_inverses(FLOAT_TYPE A[N][N], FLOAT_TYPE B[N][N]) {
   return true;
 }
 
-int main() {
+int main(int argc, char** argv) {
   FLOAT_TYPE A[N][N];
   // In bug mode, make a diagonal matrix, with the diagonal alternating between 1.0
   // and 2.0.

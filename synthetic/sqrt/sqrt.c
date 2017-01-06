@@ -52,7 +52,7 @@ float naive_sqrt(float x) {
 }
 
 
-int main() {
+int main(int argc, char** argv) {
 
   float x;
 

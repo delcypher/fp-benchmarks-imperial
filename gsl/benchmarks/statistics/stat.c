@@ -8,7 +8,7 @@
 #include <assert.h>
 
 int
-main(void)
+main(int argc, char** argv)
 {
   double data[5] = {17.2, 18.1, 16.5, 18.3, 12.6};
   double mean, variance, largest, smallest;

@@ -33,7 +33,7 @@ double ARCTAN(double x)
   else return ARCTAN_POS(x);
 }
 
-int main()
+int main(int argc, char** argv)
 {
   double a, r;
 

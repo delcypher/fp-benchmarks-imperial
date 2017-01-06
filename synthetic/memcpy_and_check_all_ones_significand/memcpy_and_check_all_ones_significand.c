@@ -25,7 +25,7 @@
 #define _EXPAND(X, Y) _CONCAT(X, Y)
 #define EXPAND(X) _EXPAND(X ## _ , FLOAT_TYPE)
 
-int main() {
+int main(int argc, char** argv) {
   FLOAT_TYPE f;
 #ifdef KLEE
   klee_make_symbolic(&f, sizeof(FLOAT_TYPE), "f");

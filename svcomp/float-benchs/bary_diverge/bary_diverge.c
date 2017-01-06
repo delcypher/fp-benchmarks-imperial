@@ -40,7 +40,7 @@ void bary()
   __VERIFIER_assert(X >= -5.f & X <= 5.f);
 }
 
-int main () 
+int main(int argc, char** argv)
 {
   int i;
 

@@ -58,7 +58,7 @@ bool in_interval(double x, interval_t a) {
   return x >= (double)a.lower && x <= (double)a.upper;
 }
 
-int main() {
+int main(int argc, char** argv) {
 
   // The program adds 'increment' to 'initial' N times.
   // With e.g. N=7 and BUG=1, these values cause failure

@@ -8,7 +8,7 @@
 #include <assert.h>
 
 int
-main (void)
+main(int argc, char** argv)
 {
   int i;
   gsl_vector * v = gsl_vector_alloc (N);

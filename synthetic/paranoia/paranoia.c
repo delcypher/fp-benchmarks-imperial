@@ -404,7 +404,7 @@ sigfpe(INT x)
 	exit(1);
 }
 
-int main(VOID)
+int main(int _notused, char** _notused2)
 {
 	/* First two assignments use integer right-hand sides. */
 	Zero = 0;

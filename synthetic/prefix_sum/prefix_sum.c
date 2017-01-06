@@ -45,7 +45,7 @@ void prefix_sum(FLOAT_TYPE data_in[N], FLOAT_TYPE data_out[N]) {
   }
 }
 
-int main() {
+int main(int argc, char** argv) {
 
   FLOAT_TYPE data_in[N];
   FLOAT_TYPE data_out[N];

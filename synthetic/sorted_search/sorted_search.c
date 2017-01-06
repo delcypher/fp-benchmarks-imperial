@@ -69,7 +69,7 @@ bool binary_search(FLOAT_TYPE data[N], FLOAT_TYPE elem) {
   return false;
 }
 
-int main() {
+int main(int argc, char** argv) {
 
   FLOAT_TYPE data[N];
   FLOAT_TYPE elem;

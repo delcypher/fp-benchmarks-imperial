@@ -56,7 +56,7 @@ FLOAT_TYPE sum2(FLOAT_TYPE data[N]) {
 }
 
 
-int main() {
+int main(int argc, char** argv) {
 
   FLOAT_TYPE data[N];
   

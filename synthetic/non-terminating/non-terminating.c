@@ -23,7 +23,7 @@
 #define HIGH 0.000003814698f
 #define LOW 0.000003814697f
  
-int main() {
+int main(int argc, char** argv) {
   
   // This is the amount by which the loop variable will be decremented
   // on each loop iteration.

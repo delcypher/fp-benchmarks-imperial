@@ -13,7 +13,7 @@ double f (double x, void * params)
 }
 
 int
-main (void)
+main (int argc, char** argv)
 {
   gsl_function F;
   double result, abserr;

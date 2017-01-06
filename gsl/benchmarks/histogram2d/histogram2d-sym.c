@@ -7,7 +7,7 @@
 
 #include <assert.h>
 
-int main (void)
+int main (int argc, char** argv)
 {
   const gsl_rng_type * T;
   gsl_rng * r;
