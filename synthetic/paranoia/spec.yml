@@ -7,6 +7,7 @@ categories:
 defines:
   NOPAUSE: null # Make non-interactive
   NOSIGNAL: null # Avoid use of signals which KLEE doesn't support.
+  KLEE: null # Enable KLEE specific code
 dependencies:
   cmath: {}
 language: c99

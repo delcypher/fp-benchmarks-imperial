@@ -223,6 +223,7 @@ q
 #ifndef NOSIGNAL
 #include <signal.h>
 #endif
+#ifdef KLEE
 // HACK: KLEE doesn't support long jump but in this benchmark
 // so disable using it. This should be okay though as
 // it would only fire if SIGFPE was raised which KLEE doesn't
@@ -230,8 +231,9 @@ q
 //#include <setjmp.h>
 #include <stdlib.h> // for `abort()`
 typedef int jmp_buf;
-int setjmp(jmp_buf env) {return 0;}
-void longjmp(jmp_buf env, int val) { abort(); }
+#define setjmp(X) 0
+#define longjmp(X, Y) do { abort(); } while(0)
+#endif
 
 #ifdef Single
 #define FLOAT float
