@@ -53,17 +53,19 @@ bool linear_search(FLOAT_TYPE data[N], FLOAT_TYPE elem) {
 }
 
 bool binary_search(FLOAT_TYPE data[N], FLOAT_TYPE elem) {
+  // Range under consideration is closed.
+  // i.e. [lo, hi]
   int lo = 0;
-  int hi = N;
-  while(lo != hi) {
+  int hi = N - 1;
+  while(lo <= hi) {
     int mid = (hi+lo) / 2;
     if(data[mid] == elem) {
       return true;
     }
     if(data[mid] > elem) {
-      hi = mid;
+      hi = mid - 1;
     } else {
-      lo = mid;
+      lo = mid + 1;
     }
   }
   return false;
