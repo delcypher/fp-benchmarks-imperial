@@ -41,18 +41,6 @@ variants:
               -
                 file: 'vector_example.c'
                 line: 56
-          -
-            description: 'NaN can cause property not to hold.'
-            locations:
-              -
-                file: 'vector_example.c'
-                line: 57
-          -
-            description: 'NaN can cause property not to hold.'
-            locations:
-              -
-                file: 'vector_example.c'
-                line: 58
   non_klee:
     defines:
       BUG: "0"
