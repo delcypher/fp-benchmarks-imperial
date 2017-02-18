@@ -38,13 +38,13 @@ variants:
                 file: 'stat.c'
                 line: 44
           -
-            description: 'NaN can cause property not to hold.'
+            description: 'data[2] can be a very large value'
             locations:
               -
                 file: 'stat.c'
                 line: 46
           -
-            description: 'NaN can cause property not to hold.'
+            description: 'data[2] can be a very small value'
             locations:
               -
                 file: 'stat.c'
