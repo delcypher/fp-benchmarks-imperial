@@ -49,12 +49,6 @@ variants:
               -
                 file: 'stat.c'
                 line: 47
-          -
-            description: 'NaN can cause property not to hold.'
-            locations:
-              -
-                file: 'stat.c'
-                line: 52
   non_klee:
     defines:
       BUG: "0"

@@ -49,7 +49,7 @@ main(int argc, char** argv)
   assert(mean >= 10.0);
   assert(mean <= 20.0);
   assert(variance >= 0.0);
-  assert(variance <= 50.0);
+  assert(variance <= 50.0); // TODO: Use Popoviciu bound of 25.0
   
 
   return 0;
