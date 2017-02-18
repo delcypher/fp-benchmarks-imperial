@@ -42,12 +42,6 @@ variants:
             locations:
               -
                 file: 'stat.c'
-                line: 45
-          -
-            description: 'NaN can cause property not to hold.'
-            locations:
-              -
-                file: 'stat.c'
                 line: 46
           -
             description: 'NaN can cause property not to hold.'
