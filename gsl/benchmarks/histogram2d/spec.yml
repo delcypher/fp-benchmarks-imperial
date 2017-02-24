@@ -23,6 +23,13 @@ variants:
     verification_tasks:
       no_assert_fail:
         correct: false
+        counter_examples:
+          - locations:
+            - file: "histogram2d-sym.c"
+              line: 71
+          - locations:
+            - file: "histogram2d-sym.c"
+              line: 72
   klee_correct:
     categories:
       - issta_2017
