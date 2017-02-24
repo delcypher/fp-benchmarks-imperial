@@ -24,6 +24,13 @@ variants:
     verification_tasks:
       no_assert_fail:
         correct: false
+        counter_examples:
+          - locations:
+              - file: "polyroots-sym.c"
+                line: 72
+          - locations:
+              - file: "polyroots-sym.c"
+                line: 73
   klee_high_degree_correct:
     defines:
       KLEE: null
