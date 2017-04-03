@@ -1,0 +1,19 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - svcomp
+  - synthetic
+dependencies:
+  svcomp_klee_runtime: {}
+language: c99
+name: svcomp_divmul_diverge
+schema_version: 0
+sources:
+  - divmul_diverge.c
+verification_tasks:
+  no_assert_fail:
+    correct: true
+description: >
+  This benchmark is taken from SV-COMP from float-benchs/divmul_diverge_true-unreach-call.c
+
