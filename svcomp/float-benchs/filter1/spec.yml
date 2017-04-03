@@ -1,0 +1,19 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - svcomp
+  - synthetic
+dependencies:
+  svcomp_klee_runtime: {}
+language: c99
+name: svcomp_filter1
+schema_version: 0
+sources:
+  - filter1.c
+verification_tasks:
+  no_assert_fail:
+    correct: true
+description: >
+  This benchmark is taken from SV-COMP from float-benchs/filter1_true-unreach-call.c
+
