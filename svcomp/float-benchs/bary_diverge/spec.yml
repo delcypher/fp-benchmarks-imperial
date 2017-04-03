@@ -7,7 +7,7 @@ categories:
 dependencies:
   svcomp_klee_runtime: {}
 language: c99
-name: bary_diverge
+name: svcomp_bary_diverge
 schema_version: 0
 sources:
   - bary_diverge.c

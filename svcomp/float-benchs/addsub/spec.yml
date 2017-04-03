@@ -7,7 +7,7 @@ categories:
 dependencies:
   svcomp_klee_runtime: {}
 language: c99
-name: addsub
+name: svcomp_addsub
 schema_version: 0
 sources:
   - addsub.c
