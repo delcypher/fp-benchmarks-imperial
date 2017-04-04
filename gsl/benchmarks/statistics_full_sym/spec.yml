@@ -1,0 +1,25 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - real_world
+dependencies:
+  gsl:
+    version: "2.1"
+language: c99
+name: statistics_full_sym
+schema_version: 0
+sources:
+  - "stat.c"
+variants:
+  klee:
+    defines:
+      KLEE: null
+    dependencies:
+      klee_runtime: {}
+    verification_tasks: {}
+description: >
+  Adapted from the stat.c example that comes with GSL.  The unmodified program
+  does some simple statistics on some concrete values. This is a variant of the
+  `statistics` benchmark. It is not declared as a variant of `statistics` to
+  avoid interfering with the existing benchmarks.
