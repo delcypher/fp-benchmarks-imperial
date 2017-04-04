@@ -1,0 +1,34 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - real_world
+dependencies:
+  gsl:
+    version: "2.1"
+language: c99
+name: vectors_full_sym
+schema_version: 0
+sources:
+  - "vector_example.c"
+variants:
+  klee:
+    defines:
+      KLEE: null
+      N: "3"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks: {}
+  non_klee:
+    defines:
+      N: "3"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks: {}
+description: >
+  Example program that uses the GSL vectors library to perform two
+  sequences of operations that should be equivalent. This based on
+  the `vectors` benchmark. Even though this is really a variant this
+  declared separately to avoid interfering with the existing `vectors`
+  benchmark.
+
