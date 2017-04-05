@@ -69,6 +69,15 @@ variants:
     verification_tasks:
       no_assert_fail:
         correct: false
+        counter_examples:
+          -
+            description: >
+              The assertion incorrectly asserts that rounding to nearest
+              will always round up.
+            locations:
+              -
+                file: rounding_sqrt.c
+                line: 129
 description: >
   This example counts the number of single-precision floating-point
   numbers between two bounding single-precision floating-point
