@@ -58,12 +58,12 @@ variants:
       HIGH_DEGREE: "1"
     verification_tasks:
       no_assert_fail:
-        correct: false
+        correct: true
   non_klee_low_degree_correct:
     description: Native version that does not depend on KLEE
     verification_tasks:
       no_assert_fail:
-        correct: false
+        correct: true
   non_klee_high_degree_bug:
     description: Native version that does not depend on KLEE
     defines:
@@ -72,6 +72,10 @@ variants:
     verification_tasks:
       no_assert_fail:
         correct: false
+        counter_examples:
+          - locations:
+              - file: "polyroots-sym.c"
+                line: 72
   non_klee_low_degree_bug:
     defines:
       BUG: "1"
@@ -79,5 +83,9 @@ variants:
     verification_tasks:
       no_assert_fail:
         correct: false
+        counter_examples:
+          - locations:
+              - file: "polyroots-sym.c"
+                line: 72
 description: >
   This is a modified version of the roots of polynomials example from the GSL manual.
