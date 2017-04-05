@@ -95,6 +95,13 @@ variants:
     verification_tasks:
       no_assert_fail:
         correct: false
+        counter_examples:
+          -
+            description: 'TODO'
+            locations:
+              -
+                file: 'interval.c'
+                line: 104
   non_klee_no_bug:
     defines:
       BUG: "0"
