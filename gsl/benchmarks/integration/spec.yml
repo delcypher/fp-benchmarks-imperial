@@ -55,5 +55,11 @@ variants:
     verification_tasks:
       no_assert_fail:
         correct: false
+        counter_examples:
+          -
+            locations:
+              -
+                file: "integration-sym.c"
+                line: 49
 description: >
   This is a variant of the numerical integration example from the GSL manual.
