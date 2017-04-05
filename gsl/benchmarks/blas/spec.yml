@@ -61,5 +61,11 @@ variants:
     verification_tasks:
       no_assert_fail:
         correct: false
+        counter_examples:
+          -
+            locations:
+              -
+                file: blas-sym.c
+                line: 51
 description: >
   This is a variant of the BLAS example from the GSL manual.
