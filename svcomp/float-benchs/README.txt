@@ -17,5 +17,3 @@ an open-source software. The other examples are hand-crafted.
 The benchmarks assume a IEEE 754 floating-point semantics (including 
 rounding, denormalized, infinites, NaN). 
 They exercise both single and double precision numbers.
-Some programs are dependent on the binary encoding of floating-point numbers
-in memory. A PowerPC encoding is assumed (watch out for endianess issues).
