@@ -1,0 +1,45 @@
+architectures:
+  - x86_64
+categories:
+  - imperial
+  - synthetic
+dependencies:
+  # Needed for rounding functions
+  cmath: {}
+language: c99
+name: sqrt_inf_nan_zeros
+schema_version: 0
+sources:
+  - sqrt_inf_nan_zeros.c
+variants:
+  klee_float:
+    defines:
+      KLEE: null
+      FLOAT_WIDTH: "32"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+  klee_double:
+    defines:
+      KLEE: null
+      FLOAT_WIDTH: "64"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+  klee_long_double:
+    defines:
+      KLEE: null
+      FLOAT_WIDTH: "80"
+    dependencies:
+      klee_runtime: {}
+    verification_tasks:
+      no_assert_fail:
+        correct: true
+description: >
+  Checks that performing sqrt() on the values in the zeros, NaN and infinities
+  IEEE-754 classes and negative normal/subnormal numbers yields the expected
+  result.
