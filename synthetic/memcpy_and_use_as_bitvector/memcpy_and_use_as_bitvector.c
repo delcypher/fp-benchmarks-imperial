@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int sink = 0;
+int sink __attribute__((used)) = 0;
 
 int main(int argc, char** argv) {
   float f;
@@ -234,7 +234,8 @@ int main(int argc, char** argv) {
   if (newValueUnsigned > 5) {
     sink += 1;
   }
-
   // Prevent removal of unused values
-  return sink;
+  printf("Sink: %d\n", sink);
+
+  return 0;
 }
