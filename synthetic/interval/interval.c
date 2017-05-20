@@ -9,6 +9,11 @@
 //       addition is wrong) and the program should be deemed incorrect
 // N   - Specifies the number of additions to be performed.
 
+// This program sets the rounding mode and so must set this pragma to tell the
+// compiler we will be using/modifying the floating point environment.
+// Otherwise the program would be undefined (See 7.6.1 The FENV_ACCESS pragama
+// - C11 specification).
+#pragma STDC FENV_ACCESS ON
 #include <assert.h>
 #include <fenv.h>
 #include <math.h>
