@@ -28,7 +28,7 @@ variants:
             locations:
               -
                 file: sorted_search.c
-                line: 91
+                line: 93
   klee_no_bug_float:
     categories:
       - ase_2017
