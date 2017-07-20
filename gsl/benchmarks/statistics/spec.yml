@@ -21,7 +21,7 @@ variants:
     verification_tasks: {}
   klee_bug:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       BUG: "1"
       KLEE: null

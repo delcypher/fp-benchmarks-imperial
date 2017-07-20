@@ -7,7 +7,7 @@ The benchmarks use the `spec.yml` format used by [fp-bench](https://github.com/d
 
 Several category name conventions are used
 
-* `issta_2017` - Benchmarks intended for study
+* `ase_2017` - Benchmarks intended for study
 * `imperial` - Benchmarks from Imperial College London
 * `synthetic` - Benchmarks that are synthetic
 * `real_world` - Benchmarks that at least partially represent real world code.

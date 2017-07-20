@@ -14,7 +14,7 @@ sources:
 variants:
   klee_bug:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       BUG: "1"
       KLEE: null
@@ -32,7 +32,7 @@ variants:
               line: 72
   klee_correct:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       KLEE: null
     dependencies:

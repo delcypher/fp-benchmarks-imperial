@@ -13,7 +13,7 @@ variants:
   # than just negating the assert?
   klee_float_2:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       KLEE: null
       FLOAT_TYPE: float
@@ -24,7 +24,7 @@ variants:
     verification_tasks: {}
   klee_double_4:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       KLEE: null
       FLOAT_TYPE: double
@@ -54,7 +54,7 @@ variants:
                 line: 120
   klee_float_4_bug:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       KLEE: null
       FLOAT_TYPE: float
@@ -75,7 +75,7 @@ variants:
                 line: 120
   klee_double_4_bug:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       KLEE: null
       FLOAT_TYPE: double

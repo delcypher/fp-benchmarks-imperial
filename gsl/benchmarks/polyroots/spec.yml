@@ -14,7 +14,7 @@ sources:
 variants:
   klee_high_degree_bug:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       BUG: "1"
       KLEE: null
@@ -42,7 +42,7 @@ variants:
         correct: true
   klee_low_degree_correct:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       KLEE: null
     dependencies:

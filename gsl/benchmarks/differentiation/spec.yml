@@ -14,7 +14,7 @@ sources:
 variants:
   klee:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       BUG: "0"
       KLEE: null

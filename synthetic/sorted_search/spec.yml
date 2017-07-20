@@ -12,7 +12,7 @@ variants:
   # FIXME: Should we add double variants?
   klee_bug_float:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       BUG: "1"
       FLOAT_TYPE: float
@@ -31,7 +31,7 @@ variants:
                 line: 91
   klee_no_bug_float:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       BUG: "0"
       FLOAT_TYPE: float

@@ -11,7 +11,7 @@ sources:
 variants:
   klee_float:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       FLOAT_TYPE: float
       KLEE: null
@@ -23,7 +23,7 @@ variants:
 
   klee_float_bug:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       FLOAT_TYPE: float
       KLEE: null

@@ -3,7 +3,7 @@ architectures:
 categories:
   - imperial
   - synthetic
-  - issta_2017
+  - ase_2017
 defines:
   NOPAUSE: null # Make non-interactive
   NOSIGNAL: null # Avoid use of signals which KLEE doesn't support.

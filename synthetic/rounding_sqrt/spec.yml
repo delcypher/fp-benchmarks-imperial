@@ -13,7 +13,7 @@ sources:
 variants:
   klee:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       BUG: "0"
       KLEE: null
@@ -24,7 +24,7 @@ variants:
         correct: true
   klee_bug:
     categories:
-      - issta_2017
+      - ase_2017
     defines:
       BUG: "1"
       KLEE: null
@@ -54,7 +54,7 @@ variants:
                 line: 123
   non_klee:
     categories:
-      - issta_2017
+      - ase_2017
     description: >
       Native version that does not depend on KLEE. Here we
       are testing that the concrete interpretation is correct.
