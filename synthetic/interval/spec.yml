@@ -26,18 +26,18 @@ variants:
       no_assert_fail:
         correct: false
         counter_examples:
-          -
-            description: 'TODO'
-            locations:
-              -
-                file: 'interval.c'
-                line: 99
-          -
+          - &in_loop_assert
             description: 'TODO'
             locations:
               -
                 file: 'interval.c'
                 line: 104
+          - &after_loop_assert
+            description: 'TODO'
+            locations:
+              -
+                file: 'interval.c'
+                line: 109
   klee_no_bug:
     categories:
       - ase_2017
@@ -64,18 +64,8 @@ variants:
       no_assert_fail:
         correct: false
         counter_examples:
-          -
-            description: 'TODO'
-            locations:
-              -
-                file: 'interval.c'
-                line: 99
-          -
-            description: 'TODO'
-            locations:
-              -
-                file: 'interval.c'
-                line: 104
+          - *in_loop_assert
+          - *after_loop_assert
   klee_no_bug_symbolic_increment:
     defines:
       KLEE: null
@@ -96,12 +86,7 @@ variants:
       no_assert_fail:
         correct: false
         counter_examples:
-          -
-            description: 'TODO'
-            locations:
-              -
-                file: 'interval.c'
-                line: 104
+          - *after_loop_assert
   non_klee_no_bug:
     defines:
       BUG: "0"

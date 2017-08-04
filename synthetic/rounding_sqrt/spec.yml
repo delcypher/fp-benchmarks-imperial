@@ -34,15 +34,15 @@ variants:
       no_assert_fail:
         correct: false
         counter_examples:
-          -
+          - &incorrect_ru_rne_assert
             description: >
               The assertion incorrectly asserts that rounding to nearest
               will always round up.
             locations:
               -
                 file: rounding_sqrt.c
-                line: 129
-          -
+                line: 134
+          - &incorrect_ru_rd_assert
             description: >
               The assertion that rounded up values are always greater than
               rounded down values is missing a guard. The values can be the
@@ -51,7 +51,7 @@ variants:
             locations:
               -
                 file: rounding_sqrt.c
-                line: 123
+                line: 128
   non_klee:
     categories:
       - ase_2017
@@ -70,14 +70,7 @@ variants:
       no_assert_fail:
         correct: false
         counter_examples:
-          -
-            description: >
-              The assertion incorrectly asserts that rounding to nearest
-              will always round up.
-            locations:
-              -
-                file: rounding_sqrt.c
-                line: 129
+          - *incorrect_ru_rne_assert
 description: >
   This example counts the number of single-precision floating-point
   numbers between two bounding single-precision floating-point
